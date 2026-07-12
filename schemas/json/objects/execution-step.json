@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/execution-step.json",
+  "title": "ExecutionStep",
+  "description": "Single step within an execution plan. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": ["ugtp:capability:execution:submit"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["stepId", "chainId", "type", "order", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "stepId": {
+      "$ref": "../types.json#/$defs/StepId"
+    },
+    "chainId": {
+      "$ref": "../types.json#/$defs/ChainId"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["transaction", "user_operation", "approval", "bridge_send", "bridge_receive", "wait"]
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "submitted", "confirmed", "failed", "skipped"]
+    },
+    "transactionHash": {
+      "$ref": "../types.json#/$defs/Hash"
+    },
+    "userOperationHash": {
+      "$ref": "../types.json#/$defs/Hash"
+    },
+    "target": {
+      "$ref": "../types.json#/$defs/AccountId"
+    },
+    "value": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "data": {
+      "type": "string",
+      "pattern": "^0x[0-9a-f]*$"
+    },
+    "gasUsed": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "feePaid": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "error": {
+      "type": "string"
+    },
+    "startedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "completedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

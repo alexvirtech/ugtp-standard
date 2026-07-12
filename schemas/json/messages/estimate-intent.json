@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/estimate-intent.json",
+  "title": "EstimateIntent Messages",
+  "description": "Request/Response for intent estimation. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0004", "ADR-0019"],
+    "relatedCapability": ["ugtp:capability:execution:plan"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": ["FEAT-GAS"]
+  },
+  "$defs": {
+    "EstimateIntentRequest": {
+      "type": "object",
+      "required": ["intentId"],
+      "additionalProperties": false,
+      "properties": {
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "EstimateIntentResponse": {
+      "type": "object",
+      "required": ["intentId", "plan"],
+      "additionalProperties": false,
+      "properties": {
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "plan": {
+          "$ref": "../objects/execution-plan.json"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/uca.json",
+  "title": "UCA",
+  "description": "Universal Crypto Account — aggregate account spanning chains. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": ["ugtp:capability:identity:create", "ugtp:capability:identity:manage"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["ucaId", "uciId", "label", "linkedAccounts", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "ucaId": {
+      "$ref": "../types.json#/$defs/UcaId"
+    },
+    "uciId": {
+      "$ref": "../types.json#/$defs/UciId"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "linkedAccounts": {
+      "type": "array",
+      "items": {
+        "$ref": "linked-account.json"
+      }
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "planId": "plan_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+  "intentId": "int_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+  "version": 1,
+  "steps": [
+    {
+      "stepId": "step_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      "chainId": 1,
+      "type": "transaction",
+      "order": 0,
+      "status": "pending",
+      "target": "0x742d35cc6634c0532925a3b844bc9e7595f2bd3e",
+      "value": "1000000000000000000"
+    }
+  ],
+  "estimatedFee": "21000000000000",
+  "estimatedDuration": 15,
+  "createdAt": "2026-01-15T10:30:00Z"
+}

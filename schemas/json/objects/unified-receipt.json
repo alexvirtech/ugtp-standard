@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/unified-receipt.json",
+  "title": "UnifiedReceipt",
+  "description": "Normalized result of intent execution across chains. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": [],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["receiptId", "intentId", "executionId", "status", "steps", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "receiptId": {
+      "$ref": "../types.json#/$defs/ReceiptId"
+    },
+    "intentId": {
+      "$ref": "../types.json#/$defs/IntentId"
+    },
+    "executionId": {
+      "$ref": "../types.json#/$defs/ExecutionId"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "confirmed", "failed", "partial"]
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "execution-step.json"
+      }
+    },
+    "totalFeePaid": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "totalGasUsed": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "confirmedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

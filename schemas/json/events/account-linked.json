@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/account-linked.json",
+  "title": "account.linked",
+  "description": "Emitted when an execution account is linked to a UCA. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0014"],
+    "relatedCapability": ["ugtp:capability:identity:link"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "account.linked"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["ucaId", "chainId", "address"],
+      "additionalProperties": false,
+      "properties": {
+        "ucaId": {
+          "$ref": "../types.json#/$defs/UcaId"
+        },
+        "chainId": {
+          "$ref": "../types.json#/$defs/ChainId"
+        },
+        "address": {
+          "$ref": "../types.json#/$defs/AccountId"
+        }
+      }
+    }
+  }
+}

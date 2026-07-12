@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/errors.json",
+  "title": "UGTP Canonical Errors",
+  "description": "Error code definitions and HTTP status mappings. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": [],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "$defs": {
+    "ErrorDefinitions": {
+      "type": "object",
+      "description": "Mapping of error codes to their metadata",
+      "properties": {
+        "VALIDATION_ERROR": {
+          "const": { "httpStatus": 400, "retryable": false, "description": "Request payload failed validation" }
+        },
+        "AUTHENTICATION_REQUIRED": {
+          "const": { "httpStatus": 401, "retryable": false, "description": "Valid authentication credentials required" }
+        },
+        "AUTHORIZATION_DENIED": {
+          "const": { "httpStatus": 403, "retryable": false, "description": "Authenticated but not authorized for this action" }
+        },
+        "POLICY_DENIED": {
+          "const": { "httpStatus": 403, "retryable": false, "description": "Action denied by account or session policy" }
+        },
+        "VERSION_UNSUPPORTED": {
+          "const": { "httpStatus": 400, "retryable": false, "description": "Requested protocol version is not supported" }
+        },
+        "CHAIN_UNSUPPORTED": {
+          "const": { "httpStatus": 400, "retryable": false, "description": "Requested chain is not supported" }
+        },
+        "ADAPTER_UNAVAILABLE": {
+          "const": { "httpStatus": 503, "retryable": true, "description": "Chain adapter is temporarily unavailable" }
+        },
+        "SIMULATION_FAILED": {
+          "const": { "httpStatus": 422, "retryable": false, "description": "Transaction simulation indicates failure" }
+        },
+        "EXECUTION_FAILED": {
+          "const": { "httpStatus": 500, "retryable": false, "description": "Execution failed on chain" }
+        },
+        "RECEIPT_NOT_FOUND": {
+          "const": { "httpStatus": 404, "retryable": false, "description": "Receipt does not exist" }
+        },
+        "TEMPORARILY_UNAVAILABLE": {
+          "const": { "httpStatus": 503, "retryable": true, "description": "Service temporarily unavailable" }
+        },
+        "INTERNAL_ERROR": {
+          "const": { "httpStatus": 500, "retryable": false, "description": "Unexpected internal error" }
+        }
+      }
+    }
+  }
+}

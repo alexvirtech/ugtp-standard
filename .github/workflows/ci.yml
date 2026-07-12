@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main, 'track/*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Validate schemas
+        run: pnpm validate
+
+      - name: Build
+        run: pnpm build
+
+      - name: Test
+        run: pnpm test
+
+      - name: Validate OpenAPI
+        run: pnpm validate:openapi
+
+      - name: Validate AsyncAPI
+        run: pnpm validate:asyncapi

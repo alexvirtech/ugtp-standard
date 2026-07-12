@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/intent.json",
+  "title": "Intent",
+  "description": "Chain-neutral statement of desired outcome. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": ["ugtp:capability:execution:submit", "ugtp:capability:execution:cancel"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["intentId", "ucaId", "type", "params", "status", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "intentId": {
+      "$ref": "../types.json#/$defs/IntentId"
+    },
+    "ucaId": {
+      "$ref": "../types.json#/$defs/UcaId"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["transfer", "swap", "bridge", "approve", "custom"]
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "fromChainId": {
+          "$ref": "../types.json#/$defs/ChainId"
+        },
+        "toChainId": {
+          "$ref": "../types.json#/$defs/ChainId"
+        },
+        "fromAsset": {
+          "$ref": "../types.json#/$defs/AssetId"
+        },
+        "toAsset": {
+          "$ref": "../types.json#/$defs/AssetId"
+        },
+        "amount": {
+          "$ref": "../types.json#/$defs/Amount"
+        },
+        "recipient": {
+          "$ref": "../types.json#/$defs/AccountId"
+        },
+        "data": {
+          "type": "string",
+          "pattern": "^0x[0-9a-f]*$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "status": {
+      "type": "string",
+      "enum": ["created", "authorized", "executing", "completed", "failed", "cancelled"]
+    },
+    "expiresAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "nonce": {
+      "$ref": "../types.json#/$defs/Nonce"
+    },
+    "signature": {
+      "$ref": "../types.json#/$defs/Signature"
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

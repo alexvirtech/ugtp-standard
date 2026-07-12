@@ -1,0 +1,226 @@
+asyncapi: '3.0.0'
+info:
+  title: UGTP Event API
+  description: Universal Gateway Transaction Protocol — canonical event definitions. Status CANDIDATE.
+  version: 0.1.0-candidate.1
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  contact:
+    name: Norionsoft
+    url: https://github.com/alexvirtech/ugtp-standard
+
+defaultContentType: application/json
+
+channels:
+  uciCreated:
+    address: ugtp.uci.created
+    messages:
+      uciCreated:
+        $ref: '#/components/messages/uciCreated'
+
+  ucaCreated:
+    address: ugtp.uca.created
+    messages:
+      ucaCreated:
+        $ref: '#/components/messages/ucaCreated'
+
+  accountLinked:
+    address: ugtp.account.linked
+    messages:
+      accountLinked:
+        $ref: '#/components/messages/accountLinked'
+
+  intentCreated:
+    address: ugtp.intent.created
+    messages:
+      intentCreated:
+        $ref: '#/components/messages/intentCreated'
+
+  intentAuthorized:
+    address: ugtp.intent.authorized
+    messages:
+      intentAuthorized:
+        $ref: '#/components/messages/intentAuthorized'
+
+  executionStarted:
+    address: ugtp.execution.started
+    messages:
+      executionStarted:
+        $ref: '#/components/messages/executionStarted'
+
+  executionStepUpdated:
+    address: ugtp.execution.step.updated
+    messages:
+      executionStepUpdated:
+        $ref: '#/components/messages/executionStepUpdated'
+
+  executionCompleted:
+    address: ugtp.execution.completed
+    messages:
+      executionCompleted:
+        $ref: '#/components/messages/executionCompleted'
+
+  executionFailed:
+    address: ugtp.execution.failed
+    messages:
+      executionFailed:
+        $ref: '#/components/messages/executionFailed'
+
+  receiptCreated:
+    address: ugtp.receipt.created
+    messages:
+      receiptCreated:
+        $ref: '#/components/messages/receiptCreated'
+
+  receiptUpdated:
+    address: ugtp.receipt.updated
+    messages:
+      receiptUpdated:
+        $ref: '#/components/messages/receiptUpdated'
+
+operations:
+  onUciCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/uciCreated'
+    messages:
+      - $ref: '#/channels/uciCreated/messages/uciCreated'
+
+  onUcaCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/ucaCreated'
+    messages:
+      - $ref: '#/channels/ucaCreated/messages/ucaCreated'
+
+  onAccountLinked:
+    action: receive
+    channel:
+      $ref: '#/channels/accountLinked'
+    messages:
+      - $ref: '#/channels/accountLinked/messages/accountLinked'
+
+  onIntentCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/intentCreated'
+    messages:
+      - $ref: '#/channels/intentCreated/messages/intentCreated'
+
+  onIntentAuthorized:
+    action: receive
+    channel:
+      $ref: '#/channels/intentAuthorized'
+    messages:
+      - $ref: '#/channels/intentAuthorized/messages/intentAuthorized'
+
+  onExecutionStarted:
+    action: receive
+    channel:
+      $ref: '#/channels/executionStarted'
+    messages:
+      - $ref: '#/channels/executionStarted/messages/executionStarted'
+
+  onExecutionStepUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/executionStepUpdated'
+    messages:
+      - $ref: '#/channels/executionStepUpdated/messages/executionStepUpdated'
+
+  onExecutionCompleted:
+    action: receive
+    channel:
+      $ref: '#/channels/executionCompleted'
+    messages:
+      - $ref: '#/channels/executionCompleted/messages/executionCompleted'
+
+  onExecutionFailed:
+    action: receive
+    channel:
+      $ref: '#/channels/executionFailed'
+    messages:
+      - $ref: '#/channels/executionFailed/messages/executionFailed'
+
+  onReceiptCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/receiptCreated'
+    messages:
+      - $ref: '#/channels/receiptCreated/messages/receiptCreated'
+
+  onReceiptUpdated:
+    action: receive
+    channel:
+      $ref: '#/channels/receiptUpdated'
+    messages:
+      - $ref: '#/channels/receiptUpdated/messages/receiptUpdated'
+
+components:
+  messages:
+    uciCreated:
+      name: uci.created
+      title: UCI Created
+      payload:
+        $ref: '../json/events/uci-created.json'
+
+    ucaCreated:
+      name: uca.created
+      title: UCA Created
+      payload:
+        $ref: '../json/events/uca-created.json'
+
+    accountLinked:
+      name: account.linked
+      title: Account Linked
+      payload:
+        $ref: '../json/events/account-linked.json'
+
+    intentCreated:
+      name: intent.created
+      title: Intent Created
+      payload:
+        $ref: '../json/events/intent-created.json'
+
+    intentAuthorized:
+      name: intent.authorized
+      title: Intent Authorized
+      payload:
+        $ref: '../json/events/intent-authorized.json'
+
+    executionStarted:
+      name: execution.started
+      title: Execution Started
+      payload:
+        $ref: '../json/events/execution-started.json'
+
+    executionStepUpdated:
+      name: execution.step.updated
+      title: Execution Step Updated
+      payload:
+        $ref: '../json/events/execution-step-updated.json'
+
+    executionCompleted:
+      name: execution.completed
+      title: Execution Completed
+      payload:
+        $ref: '../json/events/execution-completed.json'
+
+    executionFailed:
+      name: execution.failed
+      title: Execution Failed
+      payload:
+        $ref: '../json/events/execution-failed.json'
+
+    receiptCreated:
+      name: receipt.created
+      title: Receipt Created
+      payload:
+        $ref: '../json/events/receipt-created.json'
+
+    receiptUpdated:
+      name: receipt.updated
+      title: Receipt Updated
+      payload:
+        $ref: '../json/events/receipt-updated.json'

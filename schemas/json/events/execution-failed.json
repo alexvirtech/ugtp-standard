@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/execution-failed.json",
+  "title": "execution.failed",
+  "description": "Emitted when execution fails. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0014"],
+    "relatedCapability": [],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "execution.failed"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["executionId", "intentId", "error"],
+      "additionalProperties": false,
+      "properties": {
+        "executionId": {
+          "$ref": "../types.json#/$defs/ExecutionId"
+        },
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "error": {
+          "$ref": "../objects/protocol-error.json"
+        }
+      }
+    }
+  }
+}

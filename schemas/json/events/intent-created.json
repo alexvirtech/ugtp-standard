@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/intent-created.json",
+  "title": "intent.created",
+  "description": "Emitted when a new intent is created. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0014"],
+    "relatedCapability": ["ugtp:capability:execution:submit"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "intent.created"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["intentId", "ucaId", "type"],
+      "additionalProperties": false,
+      "properties": {
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "ucaId": {
+          "$ref": "../types.json#/$defs/UcaId"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["transfer", "swap", "bridge", "approve", "custom"]
+        }
+      }
+    }
+  }
+}

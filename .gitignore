@@ -7,6 +7,5 @@ dist/
 coverage/
 tmp/
 .secrets/
-*.env
 *.env.local
 demo1-mainnet.env
