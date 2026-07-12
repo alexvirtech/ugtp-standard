@@ -8,6 +8,7 @@ import {
   SUPPORTED_CHAINS,
   INTENT_TYPES,
   EVENT_TYPES,
+  STABILITY_LEVELS,
 } from '../src/constants.js'
 
 describe('constants', () => {
@@ -47,5 +48,13 @@ describe('constants', () => {
 
   it('EVENT_TYPES has 11 events', () => {
     expect(EVENT_TYPES).toHaveLength(11)
+  })
+
+  it('STABILITY_LEVELS has 4 tiers', () => {
+    expect(Object.keys(STABILITY_LEVELS)).toHaveLength(4)
+    expect(STABILITY_LEVELS.FROZEN).toBe('FROZEN')
+    expect(STABILITY_LEVELS.CANDIDATE_LOW).toBe('CANDIDATE_LOW')
+    expect(STABILITY_LEVELS.CANDIDATE_MEDIUM).toBe('CANDIDATE_MEDIUM')
+    expect(STABILITY_LEVELS.EXPERIMENTAL).toBe('EXPERIMENTAL')
   })
 })

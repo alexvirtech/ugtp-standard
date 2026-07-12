@@ -2,7 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ugtp.dev/schemas/v0.1/events/account-linked.json",
   "title": "account.linked",
-  "description": "Emitted when an execution account is linked to a UCA. Status: CANDIDATE.",
+  "description": "Emitted when an execution account is linked to a UCA. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0014"],
+    "relatedCapability": ["ugtp:capability:identity:link"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
   "type": "object",
   "required": ["eventType", "timestamp", "payload"],
   "additionalProperties": false,

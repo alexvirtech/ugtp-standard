@@ -52,7 +52,7 @@ describe('schema integrity', () => {
     expect(ids.length).toBe(unique.size)
   })
 
-  it('types.json defines all 18 canonical types', async () => {
+  it('types.json defines all 19 canonical types', async () => {
     const content = JSON.parse(await readFile(join(SCHEMAS_DIR, 'types.json'), 'utf-8'))
     const defs = Object.keys(content.$defs || {})
     expect(defs).toContain('ProtocolVersion')

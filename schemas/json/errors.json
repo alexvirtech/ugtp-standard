@@ -2,7 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ugtp.dev/schemas/v0.1/errors.json",
   "title": "UGTP Canonical Errors",
-  "description": "Error code definitions and HTTP status mappings. Status: CANDIDATE.",
+  "description": "Error code definitions and HTTP status mappings. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": [],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
   "$defs": {
     "ErrorDefinitions": {
       "type": "object",

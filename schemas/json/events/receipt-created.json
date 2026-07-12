@@ -2,7 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ugtp.dev/schemas/v0.1/events/receipt-created.json",
   "title": "receipt.created",
-  "description": "Emitted when a receipt is created. Status: CANDIDATE.",
+  "description": "Emitted when a receipt is created. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": ["ADR-0014"],
+    "relatedCapability": [],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
   "type": "object",
   "required": ["eventType", "timestamp", "payload"],
   "additionalProperties": false,

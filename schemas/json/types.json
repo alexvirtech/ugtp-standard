@@ -2,116 +2,296 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ugtp.dev/schemas/v0.1/types.json",
   "title": "UGTP Canonical Types",
-  "description": "Scalar and branded types used across all UGTP definitions. Status: CANDIDATE.",
+  "description": "Scalar and branded types used across all UGTP definitions. Stability: per-type (see x-ugtp-architecture).",
   "$defs": {
     "ProtocolVersion": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
       "description": "Semantic version of the UGTP protocol",
-      "examples": ["0.1.0"]
+      "examples": ["0.1.0"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": ["ADR-0005"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "SchemaVersion": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
       "description": "Semantic version of a schema definition",
-      "examples": ["0.1.0"]
+      "examples": ["0.1.0"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": ["ADR-0008"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "UciId": {
       "type": "string",
       "pattern": "^uci_[0-9a-f]{32}$",
       "description": "Universal Crypto Identity identifier — lower-case canonical",
-      "examples": ["uci_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["uci_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": ["ugtp:capability:identity:create"],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "UcaId": {
       "type": "string",
       "pattern": "^uca_[0-9a-f]{32}$",
       "description": "Universal Crypto Account identifier — lower-case canonical",
-      "examples": ["uca_f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3"]
+      "examples": ["uca_f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": ["ugtp:capability:identity:create"],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "AccountId": {
       "type": "string",
       "pattern": "^0x[0-9a-f]{40}$",
       "description": "Chain-native execution account address (EVM format)",
-      "examples": ["0x742d35cc6634c0532925a3b844bc9e7595f2bd3e"]
+      "examples": ["0x742d35cc6634c0532925a3b844bc9e7595f2bd3e"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "ChainId": {
       "type": "integer",
       "minimum": 1,
-      "description": "EIP-155 chain identifier",
-      "examples": [1, 137, 8453, 43114, 42161]
+      "description": "EIP-155 chain identifier. CANDIDATE — may migrate to CAIP-2 hybrid per ADR-0006.",
+      "examples": [1, 137, 8453, 43114, 42161],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "CANDIDATE",
+        "stabilityLevel": "CANDIDATE_LOW",
+        "breakingChangeRisk": "medium",
+        "relatedADR": ["ADR-0006"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "AssetId": {
       "type": "string",
       "pattern": "^[a-z0-9]+:[0-9a-f]{1,40}(:[0-9]+)?$",
       "description": "Chain-qualified asset identifier in format chain_prefix:contract_address[:token_id]",
-      "examples": ["eth:0000000000000000000000000000000000000000", "polygon:2791bca1f2de4661ed88a30c99a7a9449aa84174"]
+      "examples": ["eth:0000000000000000000000000000000000000000", "polygon:2791bca1f2de4661ed88a30c99a7a9449aa84174"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "IntentId": {
       "type": "string",
       "pattern": "^int_[0-9a-f]{32}$",
       "description": "Intent identifier — lower-case canonical",
-      "examples": ["int_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["int_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": ["ugtp:capability:execution:submit"],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "PlanId": {
       "type": "string",
       "pattern": "^plan_[0-9a-f]{32}$",
       "description": "Execution plan identifier — lower-case canonical",
-      "examples": ["plan_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["plan_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": ["ugtp:capability:execution:plan"],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "StepId": {
       "type": "string",
       "pattern": "^step_[0-9a-f]{32}$",
       "description": "Execution step identifier — lower-case canonical",
-      "examples": ["step_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["step_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "ExecutionId": {
       "type": "string",
       "pattern": "^exec_[0-9a-f]{32}$",
       "description": "Execution identifier — lower-case canonical",
-      "examples": ["exec_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["exec_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": ["ugtp:capability:execution:submit"],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "ReceiptId": {
       "type": "string",
       "pattern": "^rcpt_[0-9a-f]{32}$",
       "description": "Receipt identifier — lower-case canonical",
-      "examples": ["rcpt_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["rcpt_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "CorrelationId": {
       "type": "string",
       "pattern": "^cor_[0-9a-f]{32}$",
       "description": "Request correlation identifier for tracing",
-      "examples": ["cor_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"]
+      "examples": ["cor_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "Timestamp": {
       "type": "string",
       "format": "date-time",
       "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?Z$",
       "description": "RFC 3339 UTC timestamp with explicit Z suffix",
-      "examples": ["2026-01-15T10:30:00Z", "2026-01-15T10:30:00.123Z"]
+      "examples": ["2026-01-15T10:30:00Z", "2026-01-15T10:30:00.123Z"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": ["ADR-0005"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "Amount": {
       "type": "string",
       "pattern": "^(0|[1-9][0-9]*)$",
       "description": "Canonical decimal string representing a token amount (no leading zeros, no decimals)",
-      "examples": ["0", "1000000000000000000", "500000000"]
+      "examples": ["0", "1000000000000000000", "500000000"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "Nonce": {
       "type": "string",
       "pattern": "^(0|[1-9][0-9]*)$",
       "description": "Canonical decimal string representing a nonce value",
-      "examples": ["0", "42", "1000"]
+      "examples": ["0", "42", "1000"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "Hash": {
       "type": "string",
       "pattern": "^0x[0-9a-f]{64}$",
       "description": "32-byte hash as lower-case hex with 0x prefix",
-      "examples": ["0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"]
+      "examples": ["0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": ["ADR-0005"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "Signature": {
       "type": "string",
       "pattern": "^0x[0-9a-f]{128,}$",
       "description": "Cryptographic signature as lower-case hex with 0x prefix (minimum 64 bytes)",
-      "examples": ["0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b201"]
+      "examples": ["0xa1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b201"],
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": ["ADR-0007"],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     },
     "ErrorCode": {
       "type": "string",
@@ -129,7 +309,17 @@
         "TEMPORARILY_UNAVAILABLE",
         "INTERNAL_ERROR"
       ],
-      "description": "Canonical protocol error codes"
+      "description": "Canonical protocol error codes",
+      "x-ugtp-architecture": {
+        "source": "UGTP-TYPES-001",
+        "classification": "FROZEN",
+        "stabilityLevel": "FROZEN",
+        "breakingChangeRisk": "none",
+        "relatedADR": [],
+        "relatedCapability": [],
+        "relatedProfile": ["ugtp:profile:core"],
+        "relatedFeature": []
+      }
     }
   }
 }

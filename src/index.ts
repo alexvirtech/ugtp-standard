@@ -43,6 +43,7 @@ export {
   PROTOCOL_VERSION,
   SCHEMA_VERSION,
   STABILITY,
+  STABILITY_LEVELS,
   ERROR_CODES,
   ERROR_HTTP_STATUS,
   ERROR_RETRYABLE,
@@ -52,7 +53,21 @@ export {
   EVENT_TYPES,
 } from './constants.js'
 
-export type { Stability, SupportedChainId, EventType } from './constants.js'
+export type { Stability, StabilityLevel, SupportedChainId, EventType } from './constants.js'
+
+export {
+  TYPE_METADATA,
+  OBJECT_METADATA,
+  MESSAGE_METADATA,
+  EVENT_METADATA,
+  CONSTANT_METADATA,
+  VALIDATION_METADATA,
+  STABILITY_RULES,
+  getDefinitionMetadata,
+  getAllMetadata,
+} from './architecture.js'
+
+export type { ArchitectureMetadata, BreakingChangeRisk } from './architecture.js'
 
 export {
   validateId,

@@ -2,7 +2,17 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://ugtp.dev/schemas/v0.1/objects/execution-plan.json",
   "title": "ExecutionPlan",
-  "description": "Versioned sequence of steps derived from an intent. Status: CANDIDATE.",
+  "description": "Versioned sequence of steps derived from an intent. Stability: FROZEN.",
+  "x-ugtp-architecture": {
+    "source": "UGTP-ARCH-001",
+    "classification": "FROZEN",
+    "stabilityLevel": "FROZEN",
+    "breakingChangeRisk": "none",
+    "relatedADR": [],
+    "relatedCapability": ["ugtp:capability:execution:plan"],
+    "relatedProfile": ["ugtp:profile:core"],
+    "relatedFeature": []
+  },
   "type": "object",
   "required": ["planId", "intentId", "version", "steps", "createdAt"],
   "additionalProperties": false,
