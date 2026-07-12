@@ -1,0 +1,50 @@
+{
+  "name": "@ugtp/standard",
+  "version": "0.1.0-candidate.1",
+  "description": "UGTP machine-readable standard — canonical types, schemas, and protocol definitions",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexvirtech/ugtp-standard.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "exports": {
+    ".": "./dist/index.js",
+    "./types": "./dist/types/index.js",
+    "./schemas/json/*": "./schemas/json/*",
+    "./schemas/openapi": "./schemas/openapi/ugtp-v1.yaml",
+    "./schemas/asyncapi": "./schemas/asyncapi/ugtp-events-v1.yaml",
+    "./constants": "./dist/constants.js",
+    "./validation": "./dist/validation.js"
+  },
+  "files": [
+    "dist",
+    "schemas"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "generate": "node tools/generate-types.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate": "node tools/validate-schemas.js",
+    "validate:openapi": "node tools/validate-openapi.js",
+    "validate:asyncapi": "node tools/validate-asyncapi.js",
+    "check": "pnpm validate && pnpm build && pnpm test",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "ajv": "^8.17.0",
+    "ajv-formats": "^3.0.0",
+    "json-schema-to-typescript": "^15.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "yaml": "^2.6.0",
+    "@apidevtools/swagger-parser": "^10.1.0",
+    "@asyncapi/parser": "^3.4.0"
+  }
+}

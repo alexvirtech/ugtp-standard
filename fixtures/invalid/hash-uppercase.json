@@ -1,0 +1,18 @@
+{
+  "_description": "Hash with uppercase characters violates lower-case requirement",
+  "receiptId": "rcpt_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+  "intentId": "int_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+  "executionId": "exec_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+  "status": "confirmed",
+  "steps": [
+    {
+      "stepId": "step_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      "chainId": 1,
+      "type": "transaction",
+      "order": 0,
+      "status": "confirmed",
+      "transactionHash": "0xA1B2C3D4E5F6A7B8C9D0E1F2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2"
+    }
+  ],
+  "createdAt": "2026-01-15T10:30:00Z"
+}

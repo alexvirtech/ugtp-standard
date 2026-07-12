@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/logical-transaction.json",
+  "title": "LogicalTransaction",
+  "description": "Explorer-facing representation of an intent and all child operations. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["intentId", "ucaId", "type", "status", "steps", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "intentId": {
+      "$ref": "../types.json#/$defs/IntentId"
+    },
+    "ucaId": {
+      "$ref": "../types.json#/$defs/UcaId"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["transfer", "swap", "bridge", "approve", "custom"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "confirmed", "failed", "partial"]
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "execution-step.json"
+      }
+    },
+    "receipt": {
+      "$ref": "unified-receipt.json"
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "completedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

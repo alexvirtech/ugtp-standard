@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/linked-account.json",
+  "title": "LinkedAccount",
+  "description": "Chain-native execution account linked to a UCA. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["chainId", "address", "accountType", "linkedAt"],
+  "additionalProperties": false,
+  "properties": {
+    "chainId": {
+      "$ref": "../types.json#/$defs/ChainId"
+    },
+    "address": {
+      "$ref": "../types.json#/$defs/AccountId"
+    },
+    "accountType": {
+      "type": "string",
+      "enum": ["eoa", "smart_account", "multisig"]
+    },
+    "linkedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "verificationHash": {
+      "$ref": "../types.json#/$defs/Hash"
+    }
+  }
+}

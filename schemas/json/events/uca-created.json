@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/uca-created.json",
+  "title": "uca.created",
+  "description": "Emitted when a new UCA is created. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "uca.created"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["ucaId", "uciId"],
+      "additionalProperties": false,
+      "properties": {
+        "ucaId": {
+          "$ref": "../types.json#/$defs/UcaId"
+        },
+        "uciId": {
+          "$ref": "../types.json#/$defs/UciId"
+        }
+      }
+    }
+  }
+}

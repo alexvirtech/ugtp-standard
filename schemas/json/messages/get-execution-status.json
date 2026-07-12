@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/get-execution-status.json",
+  "title": "GetExecutionStatus Messages",
+  "description": "Request/Response for execution status queries. Status: CANDIDATE.",
+  "$defs": {
+    "GetExecutionStatusRequest": {
+      "type": "object",
+      "required": ["executionId"],
+      "additionalProperties": false,
+      "properties": {
+        "executionId": {
+          "$ref": "../types.json#/$defs/ExecutionId"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "GetExecutionStatusResponse": {
+      "type": "object",
+      "required": ["executionId", "status", "steps"],
+      "additionalProperties": false,
+      "properties": {
+        "executionId": {
+          "$ref": "../types.json#/$defs/ExecutionId"
+        },
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "executing", "confirmed", "failed"]
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "../objects/execution-step.json"
+          }
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

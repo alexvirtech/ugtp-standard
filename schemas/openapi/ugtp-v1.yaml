@@ -1,0 +1,260 @@
+openapi: '3.1.0'
+info:
+  title: UGTP REST API
+  description: Universal Gateway Transaction Protocol — canonical REST API. Status CANDIDATE.
+  version: 0.1.0-candidate.1
+  license:
+    name: MIT
+    identifier: MIT
+  contact:
+    name: Norionsoft
+    url: https://github.com/alexvirtech/ugtp-standard
+
+servers:
+  - url: https://api.example.com/v1
+    description: Example server
+
+paths:
+  /v1/uci/{uciId}:
+    get:
+      operationId: resolveUCI
+      summary: Resolve a UCI by ID
+      tags: [Identity]
+      parameters:
+        - name: uciId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/UciId'
+      responses:
+        '200':
+          description: UCI found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/resolve-uci.json#/$defs/ResolveUCIResponse'
+        '404':
+          description: UCI not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/uca/{ucaId}:
+    get:
+      operationId: resolveUCA
+      summary: Resolve a UCA by ID
+      tags: [Identity]
+      parameters:
+        - name: ucaId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/UcaId'
+      responses:
+        '200':
+          description: UCA found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/resolve-uca.json#/$defs/ResolveUCAResponse'
+        '404':
+          description: UCA not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/intents:
+    post:
+      operationId: createIntent
+      summary: Create a new intent
+      tags: [Intents]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../json/messages/create-intent.json#/$defs/CreateIntentRequest'
+      responses:
+        '201':
+          description: Intent created
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/create-intent.json#/$defs/CreateIntentResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/intents/{intentId}/estimate:
+    post:
+      operationId: estimateIntent
+      summary: Estimate execution plan for an intent
+      tags: [Intents]
+      parameters:
+        - name: intentId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/IntentId'
+      responses:
+        '200':
+          description: Estimate computed
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/estimate-intent.json#/$defs/EstimateIntentResponse'
+        '404':
+          description: Intent not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+        '422':
+          description: Simulation failed
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/intents/{intentId}/execute:
+    post:
+      operationId: submitExecution
+      summary: Submit intent for execution
+      tags: [Execution]
+      parameters:
+        - name: intentId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/IntentId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../json/messages/submit-execution.json#/$defs/SubmitExecutionRequest'
+      responses:
+        '202':
+          description: Execution accepted
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/submit-execution.json#/$defs/SubmitExecutionResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/executions/{executionId}:
+    get:
+      operationId: getExecutionStatus
+      summary: Get execution status
+      tags: [Execution]
+      parameters:
+        - name: executionId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/ExecutionId'
+      responses:
+        '200':
+          description: Execution status
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/get-execution-status.json#/$defs/GetExecutionStatusResponse'
+        '404':
+          description: Execution not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/receipts/{receiptId}:
+    get:
+      operationId: getReceipt
+      summary: Get a unified receipt
+      tags: [Receipts]
+      parameters:
+        - name: receiptId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/ReceiptId'
+      responses:
+        '200':
+          description: Receipt found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/get-receipt.json#/$defs/GetReceiptResponse'
+        '404':
+          description: Receipt not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/logical-transactions/{intentId}:
+    get:
+      operationId: getLogicalTransaction
+      summary: Get logical transaction view for an intent
+      tags: [Explorer]
+      parameters:
+        - name: intentId
+          in: path
+          required: true
+          schema:
+            $ref: '../json/types.json#/$defs/IntentId'
+      responses:
+        '200':
+          description: Logical transaction found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/logical-transaction.json'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '../json/objects/protocol-error.json'
+
+  /v1/health:
+    get:
+      operationId: healthCheck
+      summary: Health check
+      tags: [System]
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/health.json#/$defs/HealthResponse'
+
+  /v1/capabilities:
+    get:
+      operationId: getCapabilities
+      summary: Get protocol capabilities
+      tags: [System]
+      parameters:
+        - name: chainId
+          in: query
+          required: false
+          schema:
+            $ref: '../json/types.json#/$defs/ChainId'
+      responses:
+        '200':
+          description: Capabilities listing
+          content:
+            application/json:
+              schema:
+                $ref: '../json/messages/capabilities.json#/$defs/CapabilitiesResponse'

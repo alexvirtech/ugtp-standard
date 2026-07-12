@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/submit-execution.json",
+  "title": "SubmitExecution Messages",
+  "description": "Request/Response for execution submission. Status: CANDIDATE.",
+  "$defs": {
+    "SubmitExecutionRequest": {
+      "type": "object",
+      "required": ["intentId", "planId"],
+      "additionalProperties": false,
+      "properties": {
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "planId": {
+          "$ref": "../types.json#/$defs/PlanId"
+        },
+        "signature": {
+          "$ref": "../types.json#/$defs/Signature"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "SubmitExecutionResponse": {
+      "type": "object",
+      "required": ["executionId", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "executionId": {
+          "$ref": "../types.json#/$defs/ExecutionId"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["accepted", "rejected"]
+        },
+        "rejectionReason": {
+          "type": "string"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

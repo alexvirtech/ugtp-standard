@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/adapter-capabilities.json",
+  "title": "AdapterCapabilities",
+  "description": "Declared capabilities of a chain execution adapter. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["chainId", "chainName", "features"],
+  "additionalProperties": false,
+  "properties": {
+    "chainId": {
+      "$ref": "../types.json#/$defs/ChainId"
+    },
+    "chainName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "features": {
+      "type": "object",
+      "required": ["smartAccounts", "sponsorship", "simulation", "cancellation", "batching"],
+      "additionalProperties": false,
+      "properties": {
+        "smartAccounts": {
+          "type": "boolean"
+        },
+        "sponsorship": {
+          "type": "boolean"
+        },
+        "simulation": {
+          "type": "boolean"
+        },
+        "cancellation": {
+          "type": "boolean"
+        },
+        "batching": {
+          "type": "boolean"
+        }
+      }
+    },
+    "maxGasLimit": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "supportedAccountTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["eoa", "smart_account", "multisig"]
+      }
+    }
+  }
+}

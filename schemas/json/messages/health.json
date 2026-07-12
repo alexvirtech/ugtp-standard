@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/health.json",
+  "title": "Health Messages",
+  "description": "Request/Response for health check. Status: CANDIDATE.",
+  "$defs": {
+    "HealthRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "HealthResponse": {
+      "type": "object",
+      "required": ["status", "version", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["healthy", "degraded", "unhealthy"]
+        },
+        "version": {
+          "$ref": "../types.json#/$defs/ProtocolVersion"
+        },
+        "timestamp": {
+          "$ref": "../types.json#/$defs/Timestamp"
+        },
+        "adapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["chainId", "status"],
+            "properties": {
+              "chainId": {
+                "$ref": "../types.json#/$defs/ChainId"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["healthy", "degraded", "unhealthy"]
+              }
+            }
+          }
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

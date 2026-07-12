@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/capabilities.json",
+  "title": "Capabilities Messages",
+  "description": "Request/Response for capabilities query. Status: CANDIDATE.",
+  "$defs": {
+    "CapabilitiesRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chainId": {
+          "$ref": "../types.json#/$defs/ChainId"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "CapabilitiesResponse": {
+      "type": "object",
+      "required": ["protocolVersion", "adapters"],
+      "additionalProperties": false,
+      "properties": {
+        "protocolVersion": {
+          "$ref": "../types.json#/$defs/ProtocolVersion"
+        },
+        "adapters": {
+          "type": "array",
+          "items": {
+            "$ref": "../objects/adapter-capabilities.json"
+          }
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

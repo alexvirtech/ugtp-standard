@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/uca.json",
+  "title": "UCA",
+  "description": "Universal Crypto Account — aggregate account spanning chains. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["ucaId", "uciId", "label", "linkedAccounts", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "ucaId": {
+      "$ref": "../types.json#/$defs/UcaId"
+    },
+    "uciId": {
+      "$ref": "../types.json#/$defs/UciId"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "linkedAccounts": {
+      "type": "array",
+      "items": {
+        "$ref": "linked-account.json"
+      }
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

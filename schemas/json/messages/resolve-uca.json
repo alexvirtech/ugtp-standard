@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/resolve-uca.json",
+  "title": "ResolveUCA Messages",
+  "description": "Request/Response for UCA resolution. Status: CANDIDATE.",
+  "$defs": {
+    "ResolveUCARequest": {
+      "type": "object",
+      "required": ["ucaId"],
+      "additionalProperties": false,
+      "properties": {
+        "ucaId": {
+          "$ref": "../types.json#/$defs/UcaId"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "ResolveUCAResponse": {
+      "type": "object",
+      "required": ["uca"],
+      "additionalProperties": false,
+      "properties": {
+        "uca": {
+          "$ref": "../objects/uca.json"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/messages/create-intent.json",
+  "title": "CreateIntent Messages",
+  "description": "Request/Response for intent creation. Status: CANDIDATE.",
+  "$defs": {
+    "CreateIntentRequest": {
+      "type": "object",
+      "required": ["ucaId", "type", "params"],
+      "additionalProperties": false,
+      "properties": {
+        "ucaId": {
+          "$ref": "../types.json#/$defs/UcaId"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["transfer", "swap", "bridge", "approve", "custom"]
+        },
+        "params": {
+          "type": "object",
+          "properties": {
+            "fromChainId": {
+              "$ref": "../types.json#/$defs/ChainId"
+            },
+            "toChainId": {
+              "$ref": "../types.json#/$defs/ChainId"
+            },
+            "fromAsset": {
+              "$ref": "../types.json#/$defs/AssetId"
+            },
+            "toAsset": {
+              "$ref": "../types.json#/$defs/AssetId"
+            },
+            "amount": {
+              "$ref": "../types.json#/$defs/Amount"
+            },
+            "recipient": {
+              "$ref": "../types.json#/$defs/AccountId"
+            }
+          },
+          "additionalProperties": true
+        },
+        "expiresAt": {
+          "$ref": "../types.json#/$defs/Timestamp"
+        },
+        "nonce": {
+          "$ref": "../types.json#/$defs/Nonce"
+        },
+        "signature": {
+          "$ref": "../types.json#/$defs/Signature"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    },
+    "CreateIntentResponse": {
+      "type": "object",
+      "required": ["intent"],
+      "additionalProperties": false,
+      "properties": {
+        "intent": {
+          "$ref": "../objects/intent.json"
+        },
+        "correlationId": {
+          "$ref": "../types.json#/$defs/CorrelationId"
+        }
+      }
+    }
+  }
+}

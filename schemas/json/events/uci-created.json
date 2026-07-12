@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/uci-created.json",
+  "title": "uci.created",
+  "description": "Emitted when a new UCI is created. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "uci.created"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["uciId"],
+      "additionalProperties": false,
+      "properties": {
+        "uciId": {
+          "$ref": "../types.json#/$defs/UciId"
+        }
+      }
+    }
+  }
+}

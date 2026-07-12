@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/execution-plan.json",
+  "title": "ExecutionPlan",
+  "description": "Versioned sequence of steps derived from an intent. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["planId", "intentId", "version", "steps", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "planId": {
+      "$ref": "../types.json#/$defs/PlanId"
+    },
+    "intentId": {
+      "$ref": "../types.json#/$defs/IntentId"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "$ref": "execution-step.json"
+      },
+      "minItems": 1
+    },
+    "estimatedFee": {
+      "$ref": "../types.json#/$defs/Amount"
+    },
+    "estimatedDuration": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Estimated duration in seconds"
+    },
+    "validUntil": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    }
+  }
+}

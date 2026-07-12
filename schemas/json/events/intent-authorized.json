@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/intent-authorized.json",
+  "title": "intent.authorized",
+  "description": "Emitted when an intent is authorized for execution. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "intent.authorized"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["intentId"],
+      "additionalProperties": false,
+      "properties": {
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        }
+      }
+    }
+  }
+}

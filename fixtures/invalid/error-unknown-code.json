@@ -1,0 +1,5 @@
+{
+  "_description": "Error with non-canonical error code",
+  "code": "UNKNOWN_ERROR_CODE",
+  "message": "Something went wrong"
+}

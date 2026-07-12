@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/objects/uci.json",
+  "title": "UCI",
+  "description": "Universal Crypto Identity — persistent identity anchor. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["uciId", "createdAt", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "uciId": {
+      "$ref": "../types.json#/$defs/UciId"
+    },
+    "createdAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "updatedAt": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "suspended", "recovering"]
+    },
+    "recoveryHash": {
+      "$ref": "../types.json#/$defs/Hash"
+    }
+  }
+}

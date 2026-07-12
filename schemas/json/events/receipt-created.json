@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ugtp.dev/schemas/v0.1/events/receipt-created.json",
+  "title": "receipt.created",
+  "description": "Emitted when a receipt is created. Status: CANDIDATE.",
+  "type": "object",
+  "required": ["eventType", "timestamp", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "const": "receipt.created"
+    },
+    "timestamp": {
+      "$ref": "../types.json#/$defs/Timestamp"
+    },
+    "correlationId": {
+      "$ref": "../types.json#/$defs/CorrelationId"
+    },
+    "payload": {
+      "type": "object",
+      "required": ["receiptId", "intentId", "executionId"],
+      "additionalProperties": false,
+      "properties": {
+        "receiptId": {
+          "$ref": "../types.json#/$defs/ReceiptId"
+        },
+        "intentId": {
+          "$ref": "../types.json#/$defs/IntentId"
+        },
+        "executionId": {
+          "$ref": "../types.json#/$defs/ExecutionId"
+        }
+      }
+    }
+  }
+}
