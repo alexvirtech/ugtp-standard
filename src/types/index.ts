@@ -203,3 +203,42 @@ export interface ChainRegistryEntry {
   active: boolean
   capabilities?: AdapterCapabilities
 }
+
+export type OperationType = IntentType | 'all'
+
+export interface SystemFeeSchedule {
+  bps: number
+  flat: Amount
+  recipient: AccountId
+  enabled: boolean
+}
+
+export interface SystemFeeConfig {
+  defaultFee: SystemFeeSchedule
+  perOperation?: Partial<Record<OperationType, SystemFeeSchedule>>
+}
+
+export interface SystemFeeEstimate {
+  bps: number
+  flat: Amount
+  calculated: Amount
+  recipient: AccountId
+  enabled: boolean
+}
+
+export type DerivedAccountType = 'eoa' | 'smart_account' | 'private'
+
+export interface DerivedAccount {
+  type: DerivedAccountType
+  chainId: ChainId
+  address: AccountId
+  derivationPath?: string
+  status: 'active' | 'pending' | 'unsupported'
+}
+
+export interface DerivedAccountSet {
+  mnemonicId: string
+  eoaDerivationPath: string
+  primaryAddress: AccountId
+  accounts: DerivedAccount[]
+}
