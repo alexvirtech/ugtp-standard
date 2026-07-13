@@ -59,7 +59,7 @@ describe('architecture metadata', () => {
   })
 
   it('all constant metadata entries are valid', () => {
-    expect(Object.keys(CONSTANT_METADATA).length).toBe(9)
+    expect(Object.keys(CONSTANT_METADATA).length).toBe(10)
     for (const [name, meta] of Object.entries(CONSTANT_METADATA)) {
       validateMetadata(`constant/${name}`, meta)
     }
