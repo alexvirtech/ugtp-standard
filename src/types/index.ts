@@ -165,3 +165,80 @@ export interface AdapterCapabilities {
   maxGasLimit?: Amount
   supportedAccountTypes?: AccountType[]
 }
+
+export type AdapterId = `adp_${string}`
+
+export interface ChainDescriptor {
+  chainId: ChainId
+  chainName: string
+  rpcUrl: string
+  contracts: ContractAddresses
+}
+
+export interface ContractAddresses {
+  protocolConfig: AccountId
+  policyHook: AccountId
+  uciRegistry: AccountId
+  ucaRegistry: AccountId
+  linkedAccountRegistry: AccountId
+  intentRegistry: AccountId
+  adapterRegistry: AccountId
+}
+
+export interface AdapterInfo {
+  adapterId: AdapterId
+  chainId: ChainId
+  chainName: string
+  adapterAddress: AccountId
+  active: boolean
+  capabilities: AdapterCapabilities
+  registeredAt: Timestamp
+}
+
+export interface ChainRegistryEntry {
+  chainId: ChainId
+  chainName: string
+  adapterId?: AdapterId
+  adapterAddress?: AccountId
+  active: boolean
+  capabilities?: AdapterCapabilities
+}
+
+export type OperationType = IntentType | 'all'
+
+export interface SystemFeeSchedule {
+  bps: number
+  flat: Amount
+  recipient: AccountId
+  enabled: boolean
+}
+
+export interface SystemFeeConfig {
+  defaultFee: SystemFeeSchedule
+  perOperation?: Partial<Record<OperationType, SystemFeeSchedule>>
+}
+
+export interface SystemFeeEstimate {
+  bps: number
+  flat: Amount
+  calculated: Amount
+  recipient: AccountId
+  enabled: boolean
+}
+
+export type DerivedAccountType = 'eoa' | 'smart_account' | 'private'
+
+export interface DerivedAccount {
+  type: DerivedAccountType
+  chainId: ChainId
+  address: AccountId
+  derivationPath?: string
+  status: 'active' | 'pending' | 'unsupported'
+}
+
+export interface DerivedAccountSet {
+  mnemonicId: string
+  eoaDerivationPath: string
+  primaryAddress: AccountId
+  accounts: DerivedAccount[]
+}

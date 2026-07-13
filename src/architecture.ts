@@ -130,6 +130,14 @@ export const TYPE_METADATA: Record<string, ArchitectureMetadata> = {
     'UGTP-TYPES-001', 'FROZEN', 'FROZEN', 'none',
     [], [], ['ugtp:profile:core'], [],
   ),
+  OperationType: meta(
+    'UGTP-TYPES-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], [], ['ugtp:profile:core'], ['FEAT-FEES'],
+  ),
+  DerivedAccountType: meta(
+    'UGTP-TYPES-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], ['ugtp:capability:identity:create'], ['ugtp:profile:core'], ['FEAT-DERIVATION'],
+  ),
 }
 
 // --- Object schemas ---
@@ -184,6 +192,26 @@ export const OBJECT_METADATA: Record<string, ArchitectureMetadata> = {
     'UGTP-ARCH-001', 'FROZEN', 'FROZEN', 'none',
     ['ADR-0013'], [],
     ['ugtp:profile:core', 'ugtp:profile:evm'], ['FEAT-SMART'],
+  ),
+  SystemFeeSchedule: meta(
+    'UGTP-ARCH-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], [],
+    ['ugtp:profile:core'], ['FEAT-FEES'],
+  ),
+  SystemFeeConfig: meta(
+    'UGTP-ARCH-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], [],
+    ['ugtp:profile:core'], ['FEAT-FEES'],
+  ),
+  DerivedAccountSet: meta(
+    'UGTP-ARCH-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], ['ugtp:capability:identity:create'],
+    ['ugtp:profile:core'], ['FEAT-DERIVATION'],
+  ),
+  DerivedAccount: meta(
+    'UGTP-ARCH-001', 'CANDIDATE', 'CANDIDATE_MEDIUM', 'medium',
+    [], ['ugtp:capability:identity:link'],
+    ['ugtp:profile:core'], ['FEAT-DERIVATION'],
   ),
 }
 

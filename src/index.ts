@@ -37,6 +37,11 @@ export type {
   LogicalTransaction,
   ProtocolError,
   AdapterCapabilities,
+  AdapterId,
+  ChainDescriptor,
+  ContractAddresses,
+  AdapterInfo,
+  ChainRegistryEntry,
 } from './types/index.js'
 
 export {

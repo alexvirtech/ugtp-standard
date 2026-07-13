@@ -31,14 +31,14 @@ function validateMetadata(name: string, meta: ArchitectureMetadata) {
 
 describe('architecture metadata', () => {
   it('all type metadata entries are valid', () => {
-    expect(Object.keys(TYPE_METADATA).length).toBe(19)
+    expect(Object.keys(TYPE_METADATA).length).toBe(21)
     for (const [name, meta] of Object.entries(TYPE_METADATA)) {
       validateMetadata(`type/${name}`, meta)
     }
   })
 
   it('all object metadata entries are valid', () => {
-    expect(Object.keys(OBJECT_METADATA).length).toBe(10)
+    expect(Object.keys(OBJECT_METADATA).length).toBe(14)
     for (const [name, meta] of Object.entries(OBJECT_METADATA)) {
       validateMetadata(`object/${name}`, meta)
     }
