@@ -7,5 +7,6 @@ dist/
 coverage/
 tmp/
 .secrets/
+ankr.txt
 *.env.local
 demo1-mainnet.env

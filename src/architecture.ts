@@ -325,7 +325,11 @@ export const CONSTANT_METADATA: Record<string, ArchitectureMetadata> = {
     ['ADR-0006'], [], ['ugtp:profile:core', 'ugtp:profile:evm'], [],
   ),
   INTENT_TYPES: meta(
-    'UGTP-ARCH-001', 'FROZEN', 'FROZEN', 'none',
+    'UCS-1-04-007', 'FROZEN', 'FROZEN', 'none',
+    [], ['ugtp:capability:execution:submit'], ['ugtp:profile:core'], [],
+  ),
+  'IntentType:custom': meta(
+    'UCS-1-04-007', 'EXPERIMENTAL', 'EXPERIMENTAL', 'high',
     [], ['ugtp:capability:execution:submit'], ['ugtp:profile:core'], [],
   ),
   EXECUTION_STEP_TYPES: meta(
