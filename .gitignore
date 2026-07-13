@@ -6,3 +6,8 @@ dist/
 !.env.example
 coverage/
 tmp/
+.secrets/
+ankr.txt
+*.env
+*.env.local
+demo1-mainnet.env

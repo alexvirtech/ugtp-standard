@@ -76,7 +76,8 @@ export const SUPPORTED_CHAINS = {
 
 export type SupportedChainId = typeof SUPPORTED_CHAINS[keyof typeof SUPPORTED_CHAINS]
 
-export const INTENT_TYPES = ['transfer', 'swap', 'bridge', 'approve', 'custom'] as const
+// UCS-1 canonical set (7 types) + 'custom' (EXPERIMENTAL escape hatch)
+export const INTENT_TYPES = ['transfer', 'swap', 'approve', 'deploy', 'call', 'batch', 'cross-chain-transfer', 'custom'] as const
 export type IntentType = typeof INTENT_TYPES[number]
 
 export const EXECUTION_STEP_TYPES = ['transaction', 'user_operation', 'approval', 'bridge_send', 'bridge_receive', 'wait'] as const

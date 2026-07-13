@@ -34,7 +34,7 @@ export type ErrorCode =
 
 export type UciStatus = 'active' | 'suspended' | 'recovering'
 export type AccountType = 'eoa' | 'smart_account' | 'multisig'
-export type IntentType = 'transfer' | 'swap' | 'bridge' | 'approve' | 'custom'
+export type IntentType = 'transfer' | 'swap' | 'approve' | 'deploy' | 'call' | 'batch' | 'cross-chain-transfer' | 'custom'
 export type IntentStatus = 'created' | 'authorized' | 'executing' | 'completed' | 'failed' | 'cancelled'
 export type ExecutionStepType = 'transaction' | 'user_operation' | 'approval' | 'bridge_send' | 'bridge_receive' | 'wait'
 export type StepStatus = 'pending' | 'submitted' | 'confirmed' | 'failed' | 'skipped'
@@ -158,6 +158,7 @@ export interface AdapterCapabilities {
     smartAccounts: boolean
     sponsorship: boolean
     simulation: boolean
+    gasEstimation: boolean
     cancellation: boolean
     batching: boolean
   }
