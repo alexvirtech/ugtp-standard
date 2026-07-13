@@ -165,3 +165,41 @@ export interface AdapterCapabilities {
   maxGasLimit?: Amount
   supportedAccountTypes?: AccountType[]
 }
+
+export type AdapterId = `adp_${string}`
+
+export interface ChainDescriptor {
+  chainId: ChainId
+  chainName: string
+  rpcUrl: string
+  contracts: ContractAddresses
+}
+
+export interface ContractAddresses {
+  protocolConfig: AccountId
+  policyHook: AccountId
+  uciRegistry: AccountId
+  ucaRegistry: AccountId
+  linkedAccountRegistry: AccountId
+  intentRegistry: AccountId
+  adapterRegistry: AccountId
+}
+
+export interface AdapterInfo {
+  adapterId: AdapterId
+  chainId: ChainId
+  chainName: string
+  adapterAddress: AccountId
+  active: boolean
+  capabilities: AdapterCapabilities
+  registeredAt: Timestamp
+}
+
+export interface ChainRegistryEntry {
+  chainId: ChainId
+  chainName: string
+  adapterId?: AdapterId
+  adapterAddress?: AccountId
+  active: boolean
+  capabilities?: AdapterCapabilities
+}
