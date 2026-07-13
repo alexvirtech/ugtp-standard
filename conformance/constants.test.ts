@@ -42,8 +42,8 @@ describe('constants', () => {
     expect(Object.keys(SUPPORTED_CHAINS)).toHaveLength(5)
   })
 
-  it('INTENT_TYPES has 5 types', () => {
-    expect(INTENT_TYPES).toHaveLength(5)
+  it('INTENT_TYPES has 8 types', () => {
+    expect(INTENT_TYPES).toHaveLength(8)
   })
 
   it('EVENT_TYPES has 11 events', () => {
